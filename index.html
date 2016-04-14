@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8" />
     <title>Image Processing Assignment</title>
     <style>
@@ -15,6 +16,13 @@
 		    margin-left: auto;
 		    margin-right: auto;
 		}
+
+		body
+		{
+			background-color: #32af16;
+
+		}
+	
     </style>
 </head>
 <body>
@@ -24,12 +32,13 @@
  <canvas id="background" width="450" height="600" 
    style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
  <canvas id="game" width="450" height="600" 
-   style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+   style="position: absolute; left: 0; top: 0; z-index: 1;">
+   </canvas>
+   <p> Air-Football Game by Seán Collum (12315886)</p>
+   <p>Use Arrow keys to control blue player ( UP, DOWN, LEFT, RIGHT)<br>
+	Use TGFH keys to control red player ( UP, DOWN, LEFT RIGHT)</p>
 </div>
-<audio id="goal" src="goalnoise.mp3" style="display: none;"></audio>
-
 
 <script type='text/javascript' src='game.js'></script> 
-
 </body>
 </html>
