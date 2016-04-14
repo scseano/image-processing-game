@@ -44,6 +44,12 @@
 		var blueGoal = 0;
 		var redGoal = 0;
 
+		var goal = new Audio("goalnoise.mp3");
+		var background = new Audio("background.mp3");
+		var gameOver = new Audio("gameover.mp3");
+
+
+
 
 		
 
@@ -108,8 +114,10 @@
 		     		
 		     		redGoal++
 		     		redScore = redScore+redGoal;
-		     		if(redScore >=10)
+		     		if(redScore >=10)//end game, first to 10.
 		     		{
+		     			background.pause();
+		     			gameOver.play();
 		     			alert("RED TEAM WINS!");
             			document.location.reload();
 		     		}
@@ -125,6 +133,7 @@
 		function restart() 
 		{
 			//when a goal is scored, reset the ball to the middle of the field and send it it in a random direction.
+			goal.play();
 			x = 225;
 			y = 300;
 			blueGoal = 0;
@@ -147,11 +156,12 @@
 		    // if all the ball is inside the goal rectangle then give one score to the blue team
 		    if(x-ballRadius>redGoalX && x+ballRadius<redGoalX+redGoalWidth && y-ballRadius>redGoalY && y+ballRadius<redGoalY+redGoalHeight)
 		     {
-		     		
 		     		blueGoal++
 		     		blueScore = blueScore+blueGoal;
-		     		if(blueScore >=10)
+		     		if(blueScore >=10) //end game is first to 10
 		     		{
+		     			background.pause();
+		     			gameOver.play();
 		     			alert("BLUE TEAM WINS!");
             			document.location.reload();
 		     		}
@@ -186,7 +196,7 @@
 		    {
 		        goalkeeperY -= 4;
 		    }
-		    else if(goalkeeperdownPressed && ( goalkeeperY <300 -goalkeeperHeight)) 
+		    else if(goalkeeperdownPressed && ( goalkeeperY <300 -goalkeeperHeight)) //halfway line
 		    {
 		        goalkeeperY += 4;
 		    }
@@ -223,7 +233,7 @@
 		    {
 		        playerY += 4;
 		    }
-		    else if(downPressed && (playerY < 600 && playerY >300)) 
+		    else if(downPressed && (playerY < 600 && playerY >300)) //halfway line
 		    {
 		        playerY -= 4;
 		    }
@@ -250,6 +260,8 @@
 		
 		function draw()
 		{
+			background.play();
+			goalNoise = document.getElementById(goal);
 			//draws all the objects
 			drawBackground();
 			drawBall();
