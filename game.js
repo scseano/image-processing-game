@@ -115,6 +115,10 @@
 			y = 300;
 			blueGoal = 0;
 			redGoal = 0;
+			dx = Math.floor(Math.random()*5) + 1;
+			dx *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+			dy = Math.floor(Math.random()*5) + 1;
+			dy *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 		}
 
 
