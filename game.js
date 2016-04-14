@@ -167,7 +167,7 @@
 		        goalkeeperY += 4;
 		    }
 
-		    if(x > goalkeeperX && x < goalkeeperX+goalkeeperWidth && y > goalkeeperY && y < goalkeeperY+goalkeeperHeight) 
+		    if(x > goalkeeperX && x < goalkeeperX+goalkeeperWidth && y > goalkeeperY && y < goalkeeperY+goalkeeperHeight+ballRadius) 
 		    {
                     dy = -dy;
             }
