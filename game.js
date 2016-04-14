@@ -108,8 +108,15 @@
 		     		
 		     		redGoal++
 		     		redScore = redScore+redGoal;
+		     		if(redScore >=10)
+		     		{
+		     			alert("RED TEAM WINS!");
+            			document.location.reload();
+		     		}
+		     		else
+		     		{
 		     		restart();
-
+		     		}
 		     }
 
 		}
@@ -143,7 +150,15 @@
 		     		
 		     		blueGoal++
 		     		blueScore = blueScore+blueGoal;
+		     		if(blueScore >=10)
+		     		{
+		     			alert("BLUE TEAM WINS!");
+            			document.location.reload();
+		     		}
+		     		else
+		     		{
 		     		restart();
+		     		}
 
 		     }
 		}
