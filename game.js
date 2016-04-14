@@ -1,4 +1,5 @@
 
+		//Global Variables.
 		var canvas = document.getElementById("game");
 		var ctx = canvas.getContext("2d");
 		var x = 225;
@@ -49,6 +50,7 @@
 
 		function drawBackground()
 		{
+			//draws the grey rectangle with the circle and half way line.
 			var canvas = document.getElementById("background");
 			var ctx = canvas.getContext("2d");
 			ctx.fillStyle = "#d2d1d1";
@@ -66,6 +68,7 @@
 		 
 		function drawBall()
 		{
+			//draws a ball in the centre of the field.
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 	  		var ball = new Image();
 	  		ctx.beginPath();
@@ -75,15 +78,16 @@
 	        ctx.fill();
 	        ctx.stroke();
 	        ctx.closePath();
+	        // if it collides with either side, bounce off
 	        if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) 
 	        {
 		        dx = -dx;
 		    }
+		    //if it collides with top or bottom, bounce of
 		    if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) 
 		    {
 		        dy = -dy;
 		    }
-
 		   
 		    x += dx;
 		    y += dy;
@@ -91,12 +95,14 @@
 
 		function drawBlueGoal()
 		{
+			//draws the bottom goal line
 			ctx.beginPath();
 		    ctx.rect(redGoalX, redGoalY, redGoalWidth, redGoalHeight);
 		    ctx.strokeStyle = "#000000";
 		    ctx.stroke();
 		    ctx.closePath();
 
+		    // if all the ball is inside the goal rectangle then give one score to the red team
 		     if(x-ballRadius>blueGoalX && x+ballRadius<blueGoalX+blueGoalWidth && y-ballRadius>blueGoalY && y+ballRadius<blueGoalY+blueGoalHeight)
 		     {
 		     		
@@ -111,6 +117,7 @@
 
 		function restart() 
 		{
+			//when a goal is scored, reset the ball to the middle of the field and send it it in a random direction.
 			x = 225;
 			y = 300;
 			blueGoal = 0;
@@ -130,7 +137,7 @@
 		    ctx.stroke();
 		    ctx.closePath();
 
-
+		    // if all the ball is inside the goal rectangle then give one score to the blue team
 		    if(x-ballRadius>redGoalX && x+ballRadius<redGoalX+redGoalWidth && y-ballRadius>redGoalY && y+ballRadius<redGoalY+redGoalHeight)
 		     {
 		     		
@@ -143,12 +150,14 @@
 
 		function drawgoalkeeper() 
 		{
+			//draws the top goal line.
 		    ctx.beginPath();
 		    ctx.rect(goalkeeperX, goalkeeperY, goalkeeperWidth, goalkeeperHeight);
 		    ctx.fillStyle = "#ff0000";
 		    ctx.fill();
 		    ctx.closePath();
 
+		    // check to see if any of the buttons are pressed
 		    if(goalkeeperrightPressed && goalkeeperX < canvas.width-goalkeeperWidth) 
 		    {
 		        goalkeeperX += 4;
@@ -167,6 +176,7 @@
 		        goalkeeperY += 4;
 		    }
 
+		    //if the ball hits the red player then collide and bounce off in the other direction
 		    if(x > goalkeeperX && x < goalkeeperX+goalkeeperWidth && y > goalkeeperY && y < goalkeeperY+goalkeeperHeight+ballRadius) 
 		    {
                     dy = -dy;
@@ -182,6 +192,8 @@
 		    ctx.fillStyle = "#000cff";
 		    ctx.fill();
 		    ctx.closePath();
+
+		    // check to see if any of the buttons are pressed
 
 		    if(rightPressed && playerX < canvas.width-playerWidth) 
 		    {
@@ -201,7 +213,7 @@
 		        playerY -= 4;
 		    }
 
-
+		    //if the ball hits the blue player then collide and bounce off in the other direction
 		    if(x > playerX && x < playerX+playerWidth && y > playerY-ballRadius && y  < playerY+playerHeight) 
 		    {
                     dy = -dy;
@@ -211,7 +223,7 @@
 
 		function drawScore() 
 		{
-
+			//draws the scores onto the canvas in the top left corner.
 		    ctx.font = "16px Arial";
 		    ctx.fillStyle = "#0000ff";
 		    ctx.fillText("Blue: "+blueScore, 10, 20);
@@ -223,6 +235,7 @@
 		
 		function draw()
 		{
+			//draws all the objects
 			drawBackground();
 			drawBall();
 			drawRedGoal();
@@ -231,6 +244,7 @@
 			drawPlayer();
 			drawScore();
 		}
+		//listeners for the key press
 		document.addEventListener("keydown", keyDownHandler, false);
 		document.addEventListener("keyup", keyUpHandler, false);
 
