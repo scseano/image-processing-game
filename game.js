@@ -1,4 +1,5 @@
 
+		// Seán Collum - 12315886
 		//Global Variables.
 		var canvas = document.getElementById("game");
 		var ctx = canvas.getContext("2d");
